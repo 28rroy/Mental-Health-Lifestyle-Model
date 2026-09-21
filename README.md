@@ -1,17 +1,21 @@
-# Mental Health Lifestyle Model
+# Mental Health Lifestyle Model — In Progress
 
 An educational binary-classification project comparing a manually trained single sigmoid neuron, scikit-learn logistic regression, a small hidden-layer neural network, and a constant baseline.
 
-The goal is to predict whether the dataset records a mental health condition. This is a training and evaluation experiment, not a validated diagnostic tool.
+The goal is to predict whether the dataset records a mental health condition. This is a training experiment, not a validated diagnostic tool.
+
+## Project status
+
+This project is in progress. At the current 0.5 threshold, the models predict that **every person has a condition**, including people whose actual label is `None`. The training bug has been corrected, but this prediction problem is still unresolved. I am working on fixing it and improving the model’s ability to distinguish both classes. The experiments listed below are planned next steps, not completed fixes.
 
 ## Code
 
-[MentalHealthModeling.ipynb](MentalHealthModeling.ipynb) contains the corrected preprocessing, training, evaluation, and plots. Execution outputs are omitted. The CSV is not included; supply your own copy of `Mental_Health_Lifestyle_Dataset.csv`.
+[MentalHealthModeling.ipynb](MentalHealthModeling.ipynb) contains the corrected preprocessing, training, evaluation, and plots. Execution outputs are omitted. A copy of the dataset is included in this repository: [Mental_Health_Lifestyle_Dataset.csv](Mental_Health_Lifestyle_Dataset.csv).
 
 ## Run in Google Colab
 
 1. Download the notebook and open it in Google Colab using File > Upload notebook, or open this repository through Colab’s GitHub tab.
-2. Put the CSV in Google Drive at `My Drive/Collab Docs/Mental_Health_Lifestyle_Dataset.csv`.
+2. Download `Mental_Health_Lifestyle_Dataset.csv` from this repository and put it in Google Drive at `My Drive/Collab Docs/Mental_Health_Lifestyle_Dataset.csv`.
 3. Run the code cell and authorize the Drive mount when prompted. For a different location, update the path in the mount check and in `pd.read_csv(...)`.
 4. Review the model comparison, confusion matrices, classification reports, and training-loss plot.
 
