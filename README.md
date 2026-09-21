@@ -6,7 +6,7 @@ The goal is to predict whether the dataset records a mental health condition. Th
 
 ## Project status
 
-This project is in progress. At the current 0.5 threshold, the models predict that **every person has a condition**, including people whose actual label is `None`. The training bug has been corrected, but this prediction problem is still unresolved. I am working on fixing it and improving the model’s ability to distinguish both classes. The experiments listed below are planned next steps, not completed fixes.
+This project is in progress. At the current 0.5 threshold, the models predict that **every person has a condition**, including people whose actual label is `None`. I am working on fixing this problem and improving the model’s ability to distinguish both classes.
 
 ## Code
 
@@ -39,19 +39,6 @@ Target: `Mental Health Condition`. The literal `None` maps to 0 (595 rows). Anxi
 
 The CSV is read with `keep_default_na=False` to preserve the literal `None`. The split is stratified: 80% training, 20% test, random seed 42.
 
-## What was fixed
-
-- Removed the extra division by training-set size in the manual gradient.
-- Used stable binary cross-entropy to match the logistic-regression objective.
-- Replaced ineffective adaptive learning-rate conditions with a rate of 0.1 and 10,000 epochs.
-- Standardized happiness using training data only.
-- Made label encoding and category references explicit.
-- Used effectively unregularized logistic regression for comparison.
-- Added a baseline, balanced accuracy, ROC AUC, log loss, and reports for both classes.
-- Added a neural network with one hidden layer of eight tanh units.
-
-A single sigmoid neuron without a hidden layer is mathematically logistic regression. The hidden-layer network is a separate comparison model.
-
 ## Observed results
 
 The corrected notebook ran successfully in Colab on the supplied dataset:
@@ -75,12 +62,4 @@ The manual model’s probabilities match scikit-learn within approximately 0.000
 
 Results may vary slightly with library versions. Dataset origin, collection methods, and clinical validity have not been independently established.
 
-## Possible next experiments
-
-These are proposed improvements, not implemented features:
-
-- Evaluate other lifestyle inputs, such as sleep, stress, exercise, work hours, and social interaction.
-- Compare class-weighted training and thresholds chosen on validation data.
-- Use a fresh held-out test set for future final evaluation, since the current test results have already been inspected.
-
-Changing the threshold can produce both classes without improving discrimination. Coefficients describe fitted associations, not causal effects or clinically validated risk.
+Possible next experiments include evaluating other lifestyle inputs, such as sleep, stress, exercise, work hours, and social interaction.
